@@ -66,7 +66,7 @@ My design would achieve HA multi-region by having:
         - **Potential Con** There will potentially be some latency in updates on these reads- reads will be a bit stale. From a user persepctive standpoint it could be a potential issue, but I think the tradeoff for read speed and scaling is worth it.
 2) DB read replicas - Having read replicas of the primary db - this will allow the system to scale and serve reads faster. 
 3) Managing high concurrency/large number of writes:
-    - For extremely popular events, use **Queue-it (Virtual Waiting Room)**
+    - 1. For extremely popular events, use **Queue-it (Virtual Waiting Room)**
         - Controls user entry rate
         - Prevents backend overload
     - 2. **Sharding the write database by event id** - This will allow us to have multiple write databases allowing us to scale our writes.
